@@ -8,26 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
+    //@state tells that this variable updates
+    @State private var name = ""
+    @State private var textTitle = "What is your name?" //this will change when name is entered, but want to show this text first
     var body: some View {
         ZStack {
-            Color(.white)
+            Color(.gray)
                 .ignoresSafeArea()
             VStack {
-                Text("What is your name?")
+                Text(textTitle)
                     .font(.title)
                     .background(.yellow)
-                TextField("Type your name here...", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+                TextField("Type your name here...", text: $name)
+                //$name changes the var. name has to be @state
                     .multilineTextAlignment(.center)
                     .font(.title)
                     .border(Color.gray, width: 1)
-                    .background(.gray)
-                Button("Button"){
-                    
+                    .background(.green)
+                Button("Submit Name"){
+                    print(name)
+                    textTitle = "Welcome, \(name)!"
                 }
                 //end button
                 .font(.title)
                 .buttonStyle(.borderedProminent)
-                .tint(.purple)
+                .tint(.pink)
             }
             //end vstack
             .padding()
