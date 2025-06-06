@@ -13,30 +13,26 @@ struct ContentView: View {
     @State private var textTitle = "What is your name?" //this will change when name is entered, but want to show this text first
     var body: some View {
         ZStack {
-            Color(.gray)
+            Color(.white)
                 .ignoresSafeArea()
             VStack {
                 Text(textTitle)
                     .font(.title)
-                    .background(.yellow)
                 TextField("Type your name here...", text: $name)
                 //$name changes the var. name has to be @state
                     .multilineTextAlignment(.center)
                     .font(.title)
                     .border(Color.gray, width: 1)
-                    .background(.green)
+                Spacer()
                 Button("Submit Name"){
-                    print(name)
                     textTitle = "Welcome, \(name)!"
                 }
                 //end button
                 .font(.title)
                 .buttonStyle(.borderedProminent)
-                .tint(.pink)
             }
             //end vstack
             .padding()
-            .background(.blue)
         }
         //end zstack
         
